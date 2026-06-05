@@ -1,0 +1,4 @@
+/* placeholder: vendor full theme - partial sync
+   The full theme is large; in this initial vendor commit I include layouts, partials, and assets directories required by Hugo.
+   If you want the entire repository mirrored (including build scripts and root files), ask and I'll add them too.
+*/
