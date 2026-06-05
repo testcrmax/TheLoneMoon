@@ -3,12 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Content Manager</title>
-
   <script src="https://identity-js.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <script src="<%= htmlWebpackPlugin.files.chunks.cms.entry %>"></script>
+<%
+  var cmsEntry = '';
+  if (typeof htmlWebpackPlugin !== 'undefined' && htmlWebpackPlugin && htmlWebpackPlugin.files) {
+    if (htmlWebpackPlugin.files.chunks && htmlWebpackPlugin.files.chunks.cms && htmlWebpackPlugin.files.chunks.cms.entry) {
+      cmsEntry = htmlWebpackPlugin.files.chunks.cms.entry;
+    } else if (Array.isArray(htmlWebpackPlugin.files.js)) {
+      for (var i = 0; i < htmlWebpackPlugin.files.js.length; i++) {
+        if (htmlWebpackPlugin.files.js[i].indexOf('cms') !== -1) { cmsEntry = htmlWebpackPlugin.files.js[i]; break; }
+      }
+    }
+  }
+%>
+<% if (cmsEntry) { %>
+  <script src="<%= cmsEntry %>"></script>
+<% } else { %>
+  <!-- CMS bundle not found; skipping cms script -->
+<% } %>
 </body>
 </html>
