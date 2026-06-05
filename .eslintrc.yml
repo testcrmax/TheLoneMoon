@@ -1,10 +1,14 @@
 env:
   browser: true
 
-parser: babel-eslint
+parser: "@babel/eslint-parser"
 
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: 2020
+  sourceType: module
+  requireConfigFile: false
+  ecmaFeatures:
+    jsx: true
 
 plugins: [ "import" ]
 

@@ -18,14 +18,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.((png)|(eot)|(woff)|(woff2)|(ttf)|(svg)|(gif))(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader?name=/[hash].[ext]"
+        test: /\.(png|eot|woff|woff2|ttf|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource',
+        generator: { filename: '[hash][ext]' }
       },
       {
         loader: "babel-loader",
         test: /\.js?$/,
         exclude: /node_modules/,
-        query: {cacheDirectory: true}
+        options: { cacheDirectory: true }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -41,17 +42,23 @@ module.exports = {
       path: path.join(process.cwd(), "site/data"),
       prettyPrint: true
     }),
-    new CopyWebpackPlugin([
-      {
-        from: "./src/fonts/",
-        to: "fonts/",
-        flatten: true
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/fonts/"),
+          to: "fonts/",
+          noErrorOnMissing: true
+        }
+      ]
+    }),
     new HtmlWebpackPlugin({
       filename: 'admin/index.html',
       template: 'src/cms.html',
       inject: false,
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ]
 };
