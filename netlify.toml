@@ -1,13 +1,13 @@
-# netlify.toml - Isolate admin build for initial CI
 [build.environment]
   YARN_VERSION = "1.12.1"
   NPM_VERSION = "6.4.1"
   HUGO_VERSION = "0.140.0"
 
 [build]
-  # Temporarily run only the admin bundle build so we can verify webpack/admin succeeds before running Hugo.
-  command = "yarn build:admin"
+  # Run the full pipeline for the branch so Netlify builds webpack + Hugo (production output)
+  command = "yarn build"
   publish = "dist"
 
 [context.deploy-preview]
+  # keep preview command for PR-specific previews
   command = "yarn build:preview"
