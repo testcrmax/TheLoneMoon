@@ -1,3 +1,1 @@
-// Replace node-sass with dart-sass (sass) in build tooling
-// Update package.json to use "sass" in place of node-sass
-
+Updated to use dart-sass ("sass") instead of node-sass. Replace node-sass in package.json and install dependencies locally/CI to regenerate lockfile.
