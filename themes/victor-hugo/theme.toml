@@ -1,0 +1,7 @@
+name = "victor-hugo"
+license = "MIT"
+
+# Minimal theme metadata to satisfy Hugo when a theme is referenced.
+
+[params]
+  author = "" 
