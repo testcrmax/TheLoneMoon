@@ -4,7 +4,8 @@
   HUGO_VERSION = "0.140.0"
 
 [build]
-  command = "yarn build"
+  # Build the admin bundle first (webpack.admin.js -> site/static/admin), then build the site (webpack + Hugo)
+  command = "yarn build:admin && yarn build"
   publish = "dist"
 
 [context.deploy-preview]
