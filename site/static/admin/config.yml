@@ -2,9 +2,12 @@ backend:
   name: github
   repo: "testcrmax/TheLoneMoon"
   branch: "master"
+  client_id: "Ov23li7T7WKTcawPqwwG"
 
 media_folder: "static/img/uploads"
 public_folder: "/img/uploads"
+
+publish_mode: editorial_workflow
 
 collections:
   - name: "pages"
