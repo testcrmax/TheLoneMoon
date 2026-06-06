@@ -4,9 +4,10 @@
   HUGO_VERSION = "0.140.0"
 
 [build]
-  # Build the admin bundle first (webpack.admin.js -> site/static/admin), then build the site (webpack + Hugo)
-  command = "yarn build:admin && yarn build"
+  # Run the full pipeline for the branch so Netlify builds webpack + Hugo (production output)
+  command = "yarn build"
   publish = "dist"
 
 [context.deploy-preview]
+  # keep preview command for PR-specific previews
   command = "yarn build:preview"

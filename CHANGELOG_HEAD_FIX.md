@@ -1,0 +1,1 @@
+Update head partial to avoid calling getenv and use Site.BaseURL instead.

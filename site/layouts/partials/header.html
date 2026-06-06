@@ -1,0 +1,33 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="main-header">
+  <div class="container header-row">
+    <a class="logo" href="#">
+      <span class="logo-icon" aria-hidden="true">🍫</span>
+      <span class="logo-text">ChocoMilko</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
+        <span class="visually-hidden">Toggle navigation</span>
+        ☰
+      </button>
+      <ul id="primaryNav" class="nav-list" role="menubar">
+        <li role="none"><a role="menuitem" class="nav-link" href="#products">Our Milk</a></li>
+        <li role="none"><a role="menuitem" class="nav-link" href="#values">Our Values</a></li>
+        <li role="none"><a role="menuitem" class="nav-link" href="#stories">Choco Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  (function(){
+    const btn = document.getElementById('navToggle');
+    const nav = document.querySelector('.nav');
+    btn && btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
